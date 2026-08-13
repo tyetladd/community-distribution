@@ -1,0 +1,11 @@
+[Unit]
+Description=Re-allow inter-node forwarding on the kind docker bridge (Docker 27+ DOCKER-USER default-DROP workaround)
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/kind-docker-user-fix.sh
+
+[Install]
+WantedBy=multi-user.target
